@@ -10,11 +10,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Day1\Task1.txt" />
+    <Resource Include="Resources\Day1\Input.txt" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Resources\Day1\Task1.txt">
+    <None Update="Resources\Day1\Input.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

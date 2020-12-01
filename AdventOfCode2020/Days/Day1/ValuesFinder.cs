@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode2020.Days.Day1
 {
-    internal class ValueFinder
+    internal class ValuesFinder
     {
         public static List<int> Find(List<int> input, int maxDeep, int sumValue)
         {
@@ -34,7 +34,9 @@ namespace AdventOfCode2020.Days.Day1
                 }
             }
 
-            for (var i = 0; i < input.Count; ++i)
+            var init = values.Count > 0 ? values.Last().Id : 0;
+
+            for (var i = init; i < input.Count; ++i)
             {
                 if (!values.Any(x => x.Id == i))
                 {

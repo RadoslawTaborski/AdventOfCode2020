@@ -8,7 +8,7 @@ namespace AdventOfCode2020.Days.Day1
 {
     public class ValuesMultiplicator
     {
-        public static string MathOperation(List<int> values)
+        public static string GetMathOperation(List<int> values)
         {
             var result = "";
             foreach (var item in values.Take(values.Count - 1))

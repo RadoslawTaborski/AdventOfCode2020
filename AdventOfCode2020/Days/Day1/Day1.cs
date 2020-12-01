@@ -10,13 +10,13 @@ namespace AdventOfCode2020.Days.Day1
     {
         protected void Result(int noOfItems, int sum, out string result)
         {
-            var input = ReadRows($"Task1.txt").Select(x => int.Parse(x)).ToList();
+            var input = ReadRows($"Input.txt").Select(x => int.Parse(x)).ToList();
 
-            var output = ValueFinder.Find(input, noOfItems, sum);
+            var output = ValuesFinder.Find(input, noOfItems, sum);
 
             if (output != null)
             {
-                result = ValuesMultiplicator.MathOperation(output);
+                result = ValuesMultiplicator.GetMathOperation(output);
                 return;
             }
 
