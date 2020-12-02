@@ -29,7 +29,11 @@ namespace AdventOfCode2020.Tasks
             }
         }
 
-        protected abstract void Result(out string result);
+        protected virtual void Result(out string result)
+        {
+            result = "not found";
+        }
+
         public string Result()
         {
             Result(out var result);
