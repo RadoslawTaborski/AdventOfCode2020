@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AdventOfCode2020.Days.Day4
 {
-    public class Day4 : Task
+    public abstract class Day4 : Task
     {
         protected void Run()
         {

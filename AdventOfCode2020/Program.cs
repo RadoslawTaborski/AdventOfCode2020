@@ -8,12 +8,9 @@ namespace AdventOfCode2020
     {
         static void Main(string[] args)
         {
-            var input = GetInputParameters(args);
+            var (day, number) = GetInputParameters(args);
 
-            var tasks = new TasksRetriever().GetTasks(input.Day, input.Number);
-
-            var processor = new TasksProcessor();
-            processor.Run(tasks);
+            TasksRunner.Run(day, number);
 
             Console.ReadLine();
         }
