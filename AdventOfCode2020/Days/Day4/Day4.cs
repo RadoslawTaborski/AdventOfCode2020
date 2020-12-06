@@ -41,30 +41,5 @@ namespace AdventOfCode2020.Days.Day4
 
             return counter++;
         }
-
-        private List<List<string>> ReadParts(List<string> input)
-        {
-            var result = new List<List<string>>();
-
-            var tmp = new List<string>();
-            foreach(var inputData in input)
-            {
-                if(!string.IsNullOrEmpty(inputData))
-                {
-                    tmp.Add(inputData);
-                } else
-                {
-                    result.Add(tmp);
-                    tmp = new List<string>();
-                }
-            }
-
-            if (tmp.Count > 0)
-            {
-                result.Add(tmp);
-            }
-
-            return result;
-        }
     }
 }
