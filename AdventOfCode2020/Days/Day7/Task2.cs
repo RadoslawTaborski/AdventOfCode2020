@@ -7,9 +7,28 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode2020.Days.Day7
 {
-    [Task(7,2)]
+    [Task(7, 2)]
     public class Task2 : Day7
     {
-        
+        protected override string FindValue(List<Bag> bags)
+        {
+            string name = "shiny gold";
+            Bag bag = bags.Where(x => x.Name == name).First();
+
+            var counter = CountBags(bag)-1;
+
+            return $"{counter}";
+        }
+
+        private int CountBags(Bag bag)
+        {
+            var result = 1;
+            foreach (var nestedBag in bag.Bags)
+            {
+                result += (nestedBag.Value * CountBags(nestedBag.Key));
+            }
+
+            return result;
+        }
     }
 }
