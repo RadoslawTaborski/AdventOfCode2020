@@ -4,31 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventOfCode2020.Days.Day1
+namespace AdventOfCode2020.Helpers
 {
-    internal class ValuesFinder
+    public class SumFinder
     {
-        public static List<int> Find(List<int> input, int maxDeep, int sumValue)
+        public static List<long> Find(List<long> input, int maxDeep, long sumValue)
         {
-            var output = new List<List<int>>();
+            var output = new List<List<long>>();
             Find(input, new List<ValueObj>(), maxDeep, sumValue, ref output);
 
-            if(output.Count == 0)
+            if (output.Count == 0)
             {
-                throw new Exception("values not found");
+                return new List<long>();
             }
 
             return output.ElementAt(0);
         }
 
-        private static void Find(List<int> input, List<ValueObj> values, int maxDeep, int sumValue, ref List<List<int>> output)
-        { 
-            if(values.Count >= maxDeep)
+        private static void Find(List<long> input, List<ValueObj> values, int maxDeep, long sumValue, ref List<List<long>> output)
+        {
+            if (values.Count >= maxDeep)
             {
-                if(values.Select(x=>x.Value).Sum() == sumValue)
+                if (values.Select(x => x.Value).Sum() == sumValue)
                 {
-                     output.Add(values.Select(x=>x.Value).ToList());
-                } else
+                    output.Add(values.Select(x => x.Value).ToList());
+                }
+                else
                 {
                     return;
                 }
@@ -40,7 +41,7 @@ namespace AdventOfCode2020.Days.Day1
             {
                 if (!values.Any(x => x.Id == i))
                 {
-                    if(values.Select(x => x.Value).Sum() > sumValue)
+                    if (values.Select(x => x.Value).Sum() > sumValue)
                     {
                         return;
                     }
@@ -49,7 +50,8 @@ namespace AdventOfCode2020.Days.Day1
                         new ValueObj { Id = i, Value = input[i] }
                     };
                     Find(input, clone, maxDeep, sumValue, ref output);
-                } else
+                }
+                else
                 {
                     continue;
                 }
@@ -60,6 +62,6 @@ namespace AdventOfCode2020.Days.Day1
     internal record ValueObj
     {
         public int Id { get; init; }
-        public int Value { get; init; }
+        public long Value { get; init; }
     }
 }

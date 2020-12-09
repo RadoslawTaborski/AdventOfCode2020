@@ -1,4 +1,5 @@
-﻿using AdventOfCode2020.Tasks;
+﻿using AdventOfCode2020.Helpers;
+using AdventOfCode2020.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,11 @@ namespace AdventOfCode2020.Days.Day1
     {
         protected void Result(int noOfItems, int sum, out string result)
         {
-            var input = ReadRows($"Input.txt").Select(x => int.Parse(x)).ToList();
+            var input = ReadRows($"Input.txt").Select(x => long.Parse(x)).ToList();
 
-            var output = ValuesFinder.Find(input, noOfItems, sum);
+            var output = SumFinder.Find(input, noOfItems, sum);
 
-            if (output != null)
+            if (output.Count > 0)
             {
                 result = ValuesMultiplicator.GetMathOperation(output);
                 return;
