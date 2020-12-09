@@ -44,7 +44,7 @@ namespace AdventOfCode2020.Tasks
         {
             var result = new List<string>();
 
-            var path = $@"./Resources/Day{Day}/{fileName}";
+            var path = $@"./Resources/Day{Day:00}/{fileName}";
 
             if (!File.Exists(path))
             {
