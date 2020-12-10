@@ -12,7 +12,11 @@ namespace AdventOfCode2020.Days.Day10
         {
             base.Result(out result);
 
-            var input = ReadRows("Input1.txt");
+            var input = ReadRows("Input1.txt").Select(x => int.Parse(x)).ToList();
+
+            result = FindValue(input);
         }
+
+        protected abstract string FindValue(List<int> input);
     }
 }
