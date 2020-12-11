@@ -7,7 +7,7 @@ using System.Text;
 
 namespace AdventOfCode2020.Days.Day02
 {
-    public abstract class Day02 : Task
+    public abstract class Day02 : Puzzle
     {
         protected override void Result(out string result)
         {

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AdventOfCode2020.Days.Day03
 {
-    public abstract class Day03 : Task
+    public abstract class Day03 : Puzzle
     {
         protected int StartTravel(int startX, int startY, int stepInRight, int stepInDown, int observeX, int observeY, char observedObj)
         {

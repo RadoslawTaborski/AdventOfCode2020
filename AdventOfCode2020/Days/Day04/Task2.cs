@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode2020.Days.Day04
 {
-    [Task(4, 2)]
+    [Puzzle(4, 2)]
     public class Task2 : Day04
     {
         protected override IPassportScanner PrepareScanner()

@@ -6,15 +6,15 @@ using System.Text;
 
 namespace AdventOfCode2020.Tasks
 {
-    public abstract class Task : ITask
+    public abstract class Puzzle : IPuzzle
     {
-        private TaskAttribute _attribute;
+        private PuzzleAttribute _attribute;
 
         public int Number => Attribute != null ? Attribute.NumberOfTask : 0;
 
         public int Day => Attribute != null ? Attribute.Day : 0;
 
-        private TaskAttribute Attribute
+        private PuzzleAttribute Attribute
         {
             get
             {
@@ -22,8 +22,8 @@ namespace AdventOfCode2020.Tasks
                 {
                     var attrs = GetType().GetCustomAttributes(false);
 
-                    var attr = attrs.SingleOrDefault(x => x.GetType().Name == "TaskAttribute");
-                    _attribute = attr as TaskAttribute;
+                    var attr = attrs.SingleOrDefault(x => x.GetType().Name == "PuzzleAttribute");
+                    _attribute = attr as PuzzleAttribute;
                 }
                 return _attribute;
             }

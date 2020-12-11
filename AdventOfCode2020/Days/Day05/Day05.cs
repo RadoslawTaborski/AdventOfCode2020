@@ -8,7 +8,7 @@ using System.Text;
 
 namespace AdventOfCode2020.Days.Day05
 {
-    public abstract class Day05 : Task
+    public abstract class Day05 : Puzzle
     {
         protected abstract int SelectValue(List<int> values);
 

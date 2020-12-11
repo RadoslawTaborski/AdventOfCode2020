@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode2020.Days.Day07
 {
-    [Task(7)]
+    [Puzzle(7)]
     public class Task1 : Day07
     {
         protected override string FindValue(List<Bag> bags)

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode2020.Days.Day08
 {
-    [Task(8, 2)]
+    [Puzzle(8, 2)]
     public class Task2 : Day08
     {
         private OperationsMutator mutator = new OperationsMutator();

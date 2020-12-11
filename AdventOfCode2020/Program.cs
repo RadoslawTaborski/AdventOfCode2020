@@ -10,7 +10,7 @@ namespace AdventOfCode2020
         {
             var (day, number) = GetInputParameters(args);
 
-            TasksRunner.Run(day, number);
+            PuzzlesRunner.Run(day, number);
 
             Console.ReadLine();
         }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode2020.Days.Day06
 {
-    [Task(6)]
+    [Puzzle(6)]
     public class Task1 : Day06
     {
         protected override void GetAnswer(List<GroupDeclaration> groupDeclarations, out string result)

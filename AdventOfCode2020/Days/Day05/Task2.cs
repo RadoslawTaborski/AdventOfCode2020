@@ -8,7 +8,7 @@ using System.Text;
 
 namespace AdventOfCode2020.Days.Day05
 {
-    [Task(5, 2)]
+    [Puzzle(5, 2)]
     public class Task2 : Day05
     {
         protected override int SelectValue(List<int> values)

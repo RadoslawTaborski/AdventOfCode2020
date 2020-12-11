@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode2020.Days.Day10
 {
-    [Task(10, 2)]
+    [Puzzle(10, 2)]
     public class Task2 : Day10
     {
         private readonly Dictionary<int, Node> cache = new Dictionary<int, Node>();

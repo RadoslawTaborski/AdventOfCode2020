@@ -7,7 +7,7 @@ using System.Text;
 
 namespace AdventOfCode2020.Days.Day02
 {
-    [Task(2, 2)]
+    [Puzzle(2, 2)]
     public class Task2 : Day02
     {
         protected override List<IRule> CreateRules((int v1, int v2, string v3, string v4) data)

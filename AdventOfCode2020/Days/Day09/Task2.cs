@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode2020.Days.Day09
 {
-    [Task(9, 2)]
+    [Puzzle(9, 2)]
     public class Task2 : Day09
     {
         internal override long FindValue(IEnumerable<long> input)

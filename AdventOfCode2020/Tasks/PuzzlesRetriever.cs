@@ -5,12 +5,12 @@ using System.Text;
 
 namespace AdventOfCode2020.Tasks
 {
-    class TasksRetriever
+    class PuzzlesRetriever
     {
         private IEnumerable<TypeWithData> GetTasksTypes(int day = 0, int numberOfTask = 0)
         {
             var types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes())
-                            .Where(x => typeof(ITask).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract)
+                            .Where(x => typeof(IPuzzle).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract)
                             .ToList();
 
             var result = new List<TypeWithData>();
@@ -19,8 +19,8 @@ namespace AdventOfCode2020.Tasks
             {
                 var attrs = type.GetCustomAttributes(false);
 
-                var attr = attrs.SingleOrDefault(x => x.GetType().Name == "TaskAttribute");
-                TaskAttribute attribute = attr as TaskAttribute;
+                var attr = attrs.SingleOrDefault(x => x.GetType().Name == "PuzzleAttribute");
+                PuzzleAttribute attribute = attr as PuzzleAttribute;
 
                 var data = new TaskData { Day = attribute.Day, Number = attribute.NumberOfTask };
 
@@ -50,14 +50,14 @@ namespace AdventOfCode2020.Tasks
             return result;
         }
 
-        public IEnumerable<ITask> GetTasks(int day = 0, int numberOfTask = 0)
+        public IEnumerable<IPuzzle> GetTasks(int day = 0, int numberOfTask = 0)
         {
             var result = new List<TaskWithData>();
             var types = GetTasksTypes(day, numberOfTask);
 
             foreach (var type in types)
             {
-                var task = (ITask)Activator.CreateInstance(type.Type);
+                var task = (IPuzzle)Activator.CreateInstance(type.Type);
                 result.Add(new TaskWithData { Data = type.Data, Task = task });
             }
 
@@ -81,6 +81,6 @@ namespace AdventOfCode2020.Tasks
     internal class TaskWithData
     {
         public TaskData Data { get; init; }
-        public ITask Task { get; init; }
+        public IPuzzle Task { get; init; }
     }
 }

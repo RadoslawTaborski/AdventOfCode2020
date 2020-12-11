@@ -7,7 +7,7 @@ using System.Text;
 
 namespace AdventOfCode2020.Days.Day04
 {
-    public abstract class Day04 : Task
+    public abstract class Day04 : Puzzle
     {
         protected PassportReader reader = new PassportReader();
 

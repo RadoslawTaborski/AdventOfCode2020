@@ -2,11 +2,11 @@
 using AdventOfCode2020.Tasks;
 using System.Collections.Generic;
 using System.Linq;
-using Task = AdventOfCode2020.Tasks.Task;
+using Task = AdventOfCode2020.Tasks.Puzzle;
 
 namespace AdventOfCode2020.Days.Day02
 {
-    [Task(2)]
+    [Puzzle(2)]
     public class Task1 : Day02
     {
         protected override List<IRule> CreateRules((int v1, int v2, string v3, string v4) data)

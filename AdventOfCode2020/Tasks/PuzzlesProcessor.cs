@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode2020.Tasks
 {
-    public class TasksProcessor
+    public class PuzzlesProcessor
     {
-        public void Run(IEnumerable<ITask> tasks)
+        public void Run(IEnumerable<IPuzzle> tasks)
         {
             foreach(var task in tasks){
                 Console.WriteLine($"Day: {task.Day} Task: {task.Number}");

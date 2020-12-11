@@ -9,7 +9,7 @@ using System.Text;
 
 namespace AdventOfCode2020.Days.Day05
 {
-    [Task(5)]
+    [Puzzle(5)]
     public class Task1 : Day05
     {
         protected override int SelectValue(List<int> values)

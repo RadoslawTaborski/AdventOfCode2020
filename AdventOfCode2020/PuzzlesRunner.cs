@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode2020
 {
-    class TasksRunner
+    class PuzzlesRunner
     {
-        private static readonly TasksRetriever tasksRetriever = new TasksRetriever();
-        private static readonly TasksProcessor tasksProcessor = new TasksProcessor();
+        private static readonly PuzzlesRetriever tasksRetriever = new PuzzlesRetriever();
+        private static readonly PuzzlesProcessor tasksProcessor = new PuzzlesProcessor();
 
         public static void Run(int day, int number)
         {

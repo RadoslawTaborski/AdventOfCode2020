@@ -7,7 +7,7 @@ using System.Text;
 
 namespace AdventOfCode2020.Days.Day08
 {
-    public abstract class Day08 : Task
+    public abstract class Day08 : Puzzle
     {
         private IOperationFactory factory = new OperationFactory();
 

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace AdventOfCode2020.Days.Day01
 {
-    public abstract class Day01: Task
+    public abstract class Day01: Puzzle
     {
         protected void Result(int noOfItems, int sum, out string result)
         {

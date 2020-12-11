@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AdventOfCode2020.Days.Day06
 {
-    public abstract class Day06 : Task
+    public abstract class Day06 : Puzzle
     {
         protected abstract void GetAnswer(List<GroupDeclaration> groupDeclarations, out string result);
 

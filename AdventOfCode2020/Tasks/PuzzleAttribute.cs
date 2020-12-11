@@ -5,9 +5,9 @@ using System.Text;
 namespace AdventOfCode2020.Tasks
 {
     [AttributeUsage(AttributeTargets.All, Inherited = false, AllowMultiple = false)]
-    public class TaskAttribute : Attribute
+    public class PuzzleAttribute : Attribute
     {
-        public TaskAttribute(int day, int numberOfTask = 1)
+        public PuzzleAttribute(int day, int numberOfTask = 1)
         {
             Day = day;
             NumberOfTask = numberOfTask;
