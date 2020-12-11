@@ -62,6 +62,28 @@ namespace AdventOfCode2020.Tasks
             return result;
         }
 
+        protected List<List<char>> ReadTable(string fileName)
+        {
+            var result = new List<List<char>>();
+
+            var path = $@"./Resources/Day{Day:00}/{fileName}";
+
+            if (!File.Exists(path))
+            {
+                return result;
+            }
+
+            using (StreamReader sr = new StreamReader(path))
+            {
+                while (sr.Peek() >= 0)
+                {
+                    result.Add(new List<char>(sr.ReadLine()));
+                }
+            }
+
+            return result;
+        }
+
         protected List<List<string>> ReadParts(List<string> input)
         {
             var result = new List<List<string>>();

@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode2020.Days.Day11
 {
-    [Task(11,2)]
+    [Task(11, 2)]
     public class Task2 : Day11
     {
-        
+        protected override TurnMaker GetTurnMaker()
+        {
+            return new TurnMaker(5, new Task2NeighborhoodChecker());
+        }
     }
 }

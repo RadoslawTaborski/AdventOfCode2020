@@ -10,9 +10,23 @@ namespace AdventOfCode2020.Days.Day11
     {
         protected override void Result(out string result)
         {
-            base.Result(out result);
+            var input = ReadTable("Input1.txt");
 
-            var input = ReadRows("Input1.txt");
+            var area = AreaCreator.Create(input);
+
+            var memory = new List<Area>();
+            memory.Add(area);
+            do
+            {
+                memory.Add(GetTurnMaker().MakeTurn(memory.Last()));
+            }
+            while (!memory.Last().Equals(memory[^2]));
+
+            Area lastState = memory.Last();
+
+            result = $"{lastState.GetNoOfOccupiedPlaces()}";
         }
+
+        protected abstract TurnMaker GetTurnMaker();
     }
 }
