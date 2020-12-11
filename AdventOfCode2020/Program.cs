@@ -1,4 +1,4 @@
-﻿using AdventOfCode2020.Tasks;
+﻿using AdventOfCode2020.Puzzles;
 using System;
 using System.Configuration;
 

@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AdventOfCode2020.Tasks
+namespace AdventOfCode2020.Puzzles
 {
     public abstract class Puzzle : IPuzzle
     {

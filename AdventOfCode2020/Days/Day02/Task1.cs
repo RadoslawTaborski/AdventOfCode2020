@@ -1,8 +1,8 @@
 ﻿using AdventOfCode2020.Days.Day02.Rules;
-using AdventOfCode2020.Tasks;
+using AdventOfCode2020.Puzzles;
 using System.Collections.Generic;
 using System.Linq;
-using Task = AdventOfCode2020.Tasks.Puzzle;
+using Task = AdventOfCode2020.Puzzles.Puzzle;
 
 namespace AdventOfCode2020.Days.Day02
 {

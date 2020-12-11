@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AdventOfCode2020.Tasks
+namespace AdventOfCode2020.Puzzles
 {
     [AttributeUsage(AttributeTargets.All, Inherited = false, AllowMultiple = false)]
     public class PuzzleAttribute : Attribute
