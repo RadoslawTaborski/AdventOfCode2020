@@ -10,6 +10,9 @@ namespace AdventOfCode2020.Days.Day15
     [Puzzle(15)]
     public class Task1 : Day15
     {
-        
+        protected override long GetLastTurn()
+        {
+            return 2020;
+        }
     }
 }

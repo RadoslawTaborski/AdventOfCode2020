@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode2020.Days.Day15
 {
-    [Puzzle(15,2)]
+    [Puzzle(15, 2)]
     public class Task2 : Day15
     {
-        
+        protected override long GetLastTurn()
+        {
+            return 30000000L;
+        }
     }
 }
