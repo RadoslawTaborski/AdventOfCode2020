@@ -13,7 +13,7 @@ namespace AdventOfCode2020.Days.Day17
         {
             var input = ReadTable("Input1.txt");
 
-            var lastState = GetCubeCreator().Create(input);
+            var lastState = new CubeCreator().Create(input, GetDim());
             //Console.WriteLine(lastState);
             int counter = 1;
             while (counter <= 6)
@@ -24,10 +24,30 @@ namespace AdventOfCode2020.Days.Day17
                 counter++;
             }
 
-            result = $"{lastState.GetNoOfActiveCube()}";
+            result = $"{new CubeAnalyzer().GetNoOfActiveCube(lastState)}";
         }
 
-        protected abstract ITurnMaker GetTurnMaker();
-        protected abstract ICubeCreator GetCubeCreator();
+        protected abstract int GetDim();
+        protected TurnMaker GetTurnMaker() {
+            var rules = new List<Rule>
+            {
+                new Rule
+                {
+                    From = CellState.Active,
+                    To = CellState.Active,
+                    Default = CellState.Inactive,
+                    Values = new List<long> {2,3}
+                },
+                new Rule
+                {
+                    From = CellState.Inactive,
+                    Values = new List<long> {3},
+                    To = CellState.Active,
+                    Default = CellState.Inactive
+                }
+            };
+
+            return new TurnMaker(rules, new NeighborhoodChecker());
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace AdventOfCode2020.Days.Day17
     {
         public List<Rule> Rules { get; init; }
 
-        public CellState GetState(CellState currentValue, int input)
+        public CellState GetState(CellState currentValue, long input)
         {
             var rule = Rules.Where(x => x.From == currentValue).FirstOrDefault();
             if(rule.Values.Contains(input))
