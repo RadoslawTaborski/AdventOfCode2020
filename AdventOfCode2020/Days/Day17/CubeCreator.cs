@@ -27,10 +27,10 @@ namespace AdventOfCode2020.Days.Day17
                     switch (input[i][j])
                     {
                         case '.':
-                            result.SetPlace(CellState.Inactive, dims.ToArray());
+                            result.SetCell(CellState.Inactive, dims.ToArray());
                             break;
                         case '#':
-                            result.SetPlace(CellState.Active, dims.ToArray());
+                            result.SetCell(CellState.Active, dims.ToArray());
                             break;
                         default:
                             throw new Exception($"Value {input[i][j]} is not supported.");

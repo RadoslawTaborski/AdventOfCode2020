@@ -11,16 +11,13 @@ namespace AdventOfCode2020.Days.Day17
     {
         protected override void Result(out string result)
         {
-            var input = ReadTable("Input1.txt");
+            var input = ReadTable("Input2.txt");
 
             var lastState = new CubeCreator().Create(input, GetDim());
-            //Console.WriteLine(lastState);
             int counter = 1;
             while (counter <= 6)
             {
                 lastState = GetTurnMaker().MakeTurn(lastState);
-                //Console.WriteLine($"********* counter = {counter}");
-                //Console.WriteLine(lastState);
                 counter++;
             }
 

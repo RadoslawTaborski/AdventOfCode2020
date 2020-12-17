@@ -28,7 +28,7 @@ namespace AdventOfCode2020.Days.Day17
             {
                 var value = checker.Check(inputState, key.ToArray());
                 CellState newState = placeSpecifier.GetState(inputState.GetValue(key.ToArray()).Value, value);
-                result.SetPlace(newState, key.ToArray());
+                result.SetCell(newState, key.ToArray());
             }
 
             return result;

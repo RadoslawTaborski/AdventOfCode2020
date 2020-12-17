@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,11 +25,6 @@ namespace AdventOfCode2020.Days.Day17
             }
         }
 
-        public long GetNoOfActiveCube()
-        {
-            throw new NotImplementedException();
-        }
-
         public (long min, long max) GetRange(int dim)
         {
             return (bounds[dim].Min, bounds[dim].Max);
@@ -50,7 +46,7 @@ namespace AdventOfCode2020.Days.Day17
             return CellState.Inactive;
         }
 
-        public void SetPlace(CellState value, params long[] dims)
+        public void SetCell(CellState value, params long[] dims)
         {
             if(dims.Length != this.Dim)
             {
@@ -84,13 +80,13 @@ namespace AdventOfCode2020.Days.Day17
         }
     }
 
-    public record CubeKey
+    public record CubeKey //TODO:
     {
-        public List<long> Dims { get; private set; }
+        public ImmutableList<long> Dims { get; private set; }
 
         public CubeKey(params long[] dims)
         {
-            Dims = dims.ToList();
+            Dims = dims.ToImmutableList();
         }
     }
 }
