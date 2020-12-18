@@ -10,6 +10,9 @@ namespace AdventOfCode2020.Days.Day18
     [Puzzle(18)]
     public class Task1 : Day18
     {
-        
+        protected override ICreator GetCreator()
+        {
+            return new Task1Creator();
+        }
     }
 }
