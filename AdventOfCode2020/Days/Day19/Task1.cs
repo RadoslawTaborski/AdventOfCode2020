@@ -10,6 +10,9 @@ namespace AdventOfCode2020.Days.Day19
     [Puzzle(19)]
     public class Task1 : Day19
     {
-        
+        protected override Dictionary<int, IRule> ModifiedRules(Dictionary<int, IRule> processedRule)
+        {
+            return processedRule;
+        }
     }
 }

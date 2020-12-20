@@ -1,0 +1,13 @@
+﻿0: 8 | 1
+1: 11 | 31
+8: 42
+11: 42 31
+42: "b"
+31: "a"
+
+b
+ba
+a
+bbbbbbb
+bbbbbbaaaaaa
+bababababab
