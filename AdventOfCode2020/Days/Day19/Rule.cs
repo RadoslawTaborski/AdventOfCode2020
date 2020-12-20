@@ -44,7 +44,7 @@ namespace AdventOfCode2020.Days.Day19
             {
                 var r1 = dictionary[pattern[0]].GenerateRegex(dictionary);
                 var r2 = dictionary[pattern[1]].GenerateRegex(dictionary);
-                strBuilder.Append("(").Append(Loop(r1,r2,0,100)).Append(")+");
+                strBuilder.Append("(").Append(Loop(r1,r2,0,100)).Append(")");
             }
 
             return strBuilder.ToString();
@@ -61,11 +61,11 @@ namespace AdventOfCode2020.Days.Day19
             var innerLoop = Loop(r1, r2, v1 + 1, v2);
             if (innerLoop != "")
             {
-                strBuilder.Append(r1).Append('(').Append(innerLoop).Append(")*").Append(r2);
+                strBuilder.Append("(").Append(r1).Append(")((").Append(innerLoop).Append(")*)(").Append(r2).Append(")");
             }
             else
             {
-                strBuilder.Append(r1).Append(r2);
+                strBuilder.Append("(").Append(r1).Append(")(").Append(r2).Append(")");
             }
 
             return strBuilder.ToString();
