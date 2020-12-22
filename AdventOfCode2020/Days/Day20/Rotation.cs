@@ -9,8 +9,8 @@ namespace AdventOfCode2020.Days.Day20
     public enum Rotation
     {
         _0 = 0,
-        _90 = 90,
-        _180 = 180,
-        _270 = 270
+        _90 = 1,
+        _180 = 2,
+        _270 = 3
     }
 }

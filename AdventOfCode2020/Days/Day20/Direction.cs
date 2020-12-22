@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode2020.Days.Day20
 {
-    public enum Directions
+    public enum Direction
     {
         Up, Right, Down, Left
     }
