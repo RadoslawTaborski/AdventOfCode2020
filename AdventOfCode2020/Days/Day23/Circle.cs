@@ -9,100 +9,43 @@ namespace AdventOfCode2020.Days.Day23
 {
     public class Circle
     {
-        public KeyValuePair<int, Cup> Current { get; private set; }
-        private HashSet<Cup> Enabled { get; set; }
-        private List<Cup> Cups { get; set; }
+        public int MaxId { get; private set; }
+        private Dictionary<int, Cup> Memory { get; set; }
+        public Cup Start { get; private set; }
 
-        public Circle(List<Cup> cups)
+        public Circle(Cup start)
         {
-            Cups = cups;
-            Current = new KeyValuePair<int, Cup>(0, Cups[0]);
-            Enabled = new HashSet<Cup>(cups);
+            Start = start;
+            Memory = new Dictionary<int, Cup>();
+            var cup = start;
+            MaxId = cup.Id;
+            do
+            {
+                Memory.Add(cup.Id, cup);
+                cup = cup.Next;
+                if (MaxId < cup.Id)
+                {
+                    MaxId = cup.Id;
+                }
+            } while (cup.Id != start.Id);
         }
 
-        public Cup GetNext()
+        public Cup GetCup(int id)
         {
-            var next = Cups[GetNextIndex(1)];
-            Current = new KeyValuePair<int, Cup>(GetNextIndex(1), next);
-            return Current.Value;
-        }
-
-        public void SkipTo(Cup cup)
-        {
-            var idx = Cups.IndexOf(cup);
-            Current = new KeyValuePair<int, Cup>(idx, Cups[idx]);
+            return Memory[id];
         }
 
         public List<Cup> GetAll(Cup start)
         {
-            var previous = Current;
-            SkipTo(start);
             var result = new List<Cup>();
-            for(var i = 0; i < Cups.Count; ++i)
+            var cup = start;
+            do
             {
-                var idx = GetNextIndex(i);
-                result.Add(Cups[idx]);
-            }
-
-            SkipTo(previous.Value);
-            return result;
-        }
-
-        public Cup Exists(int cupId)
-        {
-            if (cupId < 0)
-            {
-                return Cups.MaxBy(x => x.Id).First();
-            }
-            var cup = new Cup { Id = cupId };
-            if (Enabled.Contains(cup))
-            {
-                return cup;
-            } else
-            {
-                return null;
-            }
-        }
-
-        public List<Cup> ExtractNext(int number)
-        {
-            var result = new List<Cup>();
-
-            for(var i =0; i<number; ++i)
-            {
-                var idx = GetNextIndex(1);
-                result.Add(Cups[idx]);
-                Enabled.Remove(Cups[idx]);
-                Cups.RemoveAt(idx);
-                SkipTo(Current.Value);
-            }
+                result.Add(cup);
+                cup = cup.Next;
+            } while (cup.Id != start.Id);
 
             return result;
-        }
-
-        public void Insert(List<Cup> toAdd)
-        {
-            var idx = GetNextIndex(1);
-            foreach (var a in toAdd)
-            {
-                Cups.Insert(idx, a);
-                Enabled.Add(a);
-            }
-        }
-
-        private int GetNextIndex(int number)
-        {
-            var newIdx = Current.Key + number;
-            if (newIdx>Cups.Count-1)
-            {
-                return newIdx - Cups.Count;
-            }
-            return newIdx;
-        }
-
-        public override string ToString()
-        {
-            return string.Join(", ", Cups);
         }
     }
 }
