@@ -80,13 +80,37 @@ namespace AdventOfCode2020.Days.Day17
         }
     }
 
-    public record CubeKey //TODO:
+    public class CubeKey : IEquatable<CubeKey>
     {
         public ImmutableList<long> Dims { get; private set; }
 
         public CubeKey(params long[] dims)
         {
             Dims = dims.ToImmutableList();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is CubeKey key && key.Equals(this);
+        }
+
+        public override int GetHashCode()
+        {
+            return (int)((31 * Dims.Aggregate((a, b) => a * b) + Dims.Count+17)%int.MaxValue);
+        }
+
+        public bool Equals(CubeKey other)
+        {
+            if (Dims.SequenceEqual(other.Dims))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public override string ToString()
+        {
+            return string.Join(", ", Dims);
         }
     }
 }

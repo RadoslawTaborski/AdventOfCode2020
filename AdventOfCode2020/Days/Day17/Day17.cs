@@ -15,7 +15,7 @@ namespace AdventOfCode2020.Days.Day17
 
             var lastState = new CubeCreator().Create(input, GetDim());
             int counter = 1;
-            while (counter <= 6)
+            while (counter <= 1)
             {
                 lastState = GetTurnMaker().MakeTurn(lastState);
                 counter++;
