@@ -14,10 +14,14 @@ namespace AdventOfCode2020.Days.Day17
             var input = ReadTable("Input2.txt");
 
             var lastState = new CubeCreator().Create(input, GetDim());
+            Console.WriteLine($"Step: {0}");
+            Console.WriteLine(lastState);
             int counter = 1;
-            while (counter <= 1)
+            while (counter <= 6)
             {
                 lastState = GetTurnMaker().MakeTurn(lastState);
+                Console.WriteLine($"Step: {counter}");
+                Console.WriteLine(lastState);
                 counter++;
             }
 

@@ -78,6 +78,28 @@ namespace AdventOfCode2020.Days.Day17
 
             return range;
         }
+
+        public override string ToString()
+        {
+            var resultBuilder = new StringBuilder();
+            if (Dim == 3)
+            {
+                for (var z = bounds[2].Min; z <= bounds[2].Max; ++z)
+                {
+                    resultBuilder.Append($"z: {z}\r\n");
+                    for (var y = bounds[0].Min; y <= bounds[0].Max; ++y)
+                    {
+                        for (var x = bounds[1].Min; x <= bounds[1].Max; ++x)
+                        {
+                            resultBuilder.Append((char)GetValue(y, x, z));
+                        }
+                        resultBuilder.Append(Environment.NewLine);
+                    }
+                }
+            }
+
+            return resultBuilder.ToString();
+        }
     }
 
     public class CubeKey : IEquatable<CubeKey>
