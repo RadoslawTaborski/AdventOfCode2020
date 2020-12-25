@@ -10,6 +10,9 @@ namespace AdventOfCode2020.Days.Day24
     [Puzzle(24)]
     public class Task1 : Day24
     {
-        
+        protected override HexGrid ModifyGrid(HexGrid grid)
+        {
+            return grid;
+        }
     }
 }
