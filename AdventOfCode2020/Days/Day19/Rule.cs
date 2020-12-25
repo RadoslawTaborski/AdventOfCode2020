@@ -30,7 +30,7 @@ namespace AdventOfCode2020.Days.Day19
                 }
             }
 
-            return new StringBuilder().Append("(").Append(string.Join("|", list)).Append(")").ToString();
+            return new StringBuilder().Append('(').Append(string.Join("|", list)).Append(')').ToString();
         }
 
         private string CreateFromCollectionWithLoop(List<int> pattern, Dictionary<int, IRule> dictionary)
@@ -61,11 +61,11 @@ namespace AdventOfCode2020.Days.Day19
             var innerLoop = Loop(r1, r2, v1 + 1, v2);
             if (innerLoop != "")
             {
-                strBuilder.Append("(").Append(r1).Append(")((").Append(innerLoop).Append(")*)(").Append(r2).Append(")");
+                strBuilder.Append('(').Append(r1).Append(")((").Append(innerLoop).Append(")*)(").Append(r2).Append(")");
             }
             else
             {
-                strBuilder.Append("(").Append(r1).Append(")(").Append(r2).Append(")");
+                strBuilder.Append('(').Append(r1).Append(")(").Append(r2).Append(")");
             }
 
             return strBuilder.ToString();
