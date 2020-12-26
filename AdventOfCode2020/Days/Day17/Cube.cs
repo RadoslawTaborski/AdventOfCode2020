@@ -10,13 +10,13 @@ namespace AdventOfCode2020.Days.Day17
     public class Cube
     {
         public int Dim { get; }
-        public Dictionary<CubeKey, CellState> Cells { get; }
+        public Dictionary<string, CellState> Cells { get; }
         public List<Range> Bounds { get; private set; }
 
         public Cube(int dim)
         {
             this.Dim = dim;
-            this.Cells = new Dictionary<CubeKey, CellState>();
+            this.Cells = new Dictionary<string, CellState>();
             this.Bounds = new List<Range>();
             for(var i = 0; i < dim; ++i)
             {
@@ -31,9 +31,10 @@ namespace AdventOfCode2020.Days.Day17
 
         public CellState? GetValue(CubeKey key)
         {
-            if (Cells.ContainsKey(key))
+            var str = key.ToString();
+            if (Cells.ContainsKey(key.ToString()))
             {
-                return Cells[key];
+                return Cells[str];
             }
 
             return CellState.Inactive;
@@ -41,7 +42,7 @@ namespace AdventOfCode2020.Days.Day17
 
         public void SetCell(CellState value, CubeKey dims)
         {
-            Cells[dims] = value;
+            Cells[dims.ToString()] = value;
             UpdateRanges(dims);
         }
 
@@ -77,6 +78,11 @@ namespace AdventOfCode2020.Days.Day17
             Dims = dims.ToImmutableList();
         }
 
+        public CubeKey(string str)
+        {
+            Dims = str.Split(",").Select(x=>long.Parse(x)).ToImmutableList();
+        }
+
         public override bool Equals(object obj)
         {
             return obj is CubeKey key && key.Equals(this);
@@ -98,7 +104,7 @@ namespace AdventOfCode2020.Days.Day17
 
         public override string ToString()
         {
-            return string.Join(", ", Dims);
+            return string.Join(",", Dims);
         }
     }
 }

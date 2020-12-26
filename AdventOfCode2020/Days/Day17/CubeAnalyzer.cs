@@ -15,7 +15,7 @@ namespace AdventOfCode2020.Days.Day17
 
         public static List<CubeKey> GetActiveCells(Cube cube)
         {
-            return cube.Cells.Where(x => x.Value == CellState.Active).Select(x=>x.Key).ToList();
+            return cube.Cells.Where(x => x.Value == CellState.Active).Select(x=>new CubeKey(x.Key)).ToList();
         }
 
         public static List<CubeKey> GenerateKeysToCheck(Cube input, CubeKey dims)
