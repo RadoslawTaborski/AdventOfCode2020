@@ -16,16 +16,40 @@ namespace AdventOfCode2020.Days.Day17
                 throw new Exception("wrong number of input data");
             }
 
-            var keysToCheck = new List<List<long>>();
-            Check(new List<long>(), ref keysToCheck, 0, dims);
-            keysToCheck = keysToCheck.Where(x => !AreTheSame(x, dims)).ToList();
+            var keysToCheck = GenerateKeysToCheck(input, dims);
 
-            foreach(var key in keysToCheck)
+            foreach (var key in keysToCheck)
             {
-                var value = input.GetValue(key.ToArray());
+                var value = input.GetValue(key);
                 if (value == CellState.Active)
                 {
                     result++;
+                }
+            }
+
+            return result;
+        }
+
+        private List<CubeKey> GenerateKeysToCheck(Cube input, long[] dims)
+        {
+            var keysToCheck = new List<List<long>>();
+            Check(new List<long>(), ref keysToCheck, 0, dims);
+            keysToCheck = keysToCheck.Where(x => !AreTheSame(x, dims)).ToList();
+            var keys = keysToCheck.Select(x=>new CubeKey(x.ToArray())).ToList();
+            var result = new List<CubeKey>();
+            foreach (var k in keys) {
+                var flag = true;
+                for (var i = 0; i < dims.Length; ++i)
+                {
+                    if(k.Dims[i]>input.Bounds[i].Max || k.Dims[i] < input.Bounds[i].Min)
+                    {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag)
+                {
+                    result.Add(k);
                 }
             }
 
@@ -54,8 +78,10 @@ namespace AdventOfCode2020.Days.Day17
             }
             for (var i = -1; i <= 1; ++i)
             {
-                var copy = new List<long>(input);
-                copy.Add(dims[idx] + i);
+                var copy = new List<long>(input)
+                {
+                    dims[idx] + i
+                };
                 Check(copy, ref output, idx + 1, dims);
             }
         }

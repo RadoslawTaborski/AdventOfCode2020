@@ -41,7 +41,7 @@ namespace AdventOfCode2020.Days.Day17
                 output.Add(input);
                 return;
             }
-            for (var i = cube.GetRange(idx).min -1; i <= cube.GetRange(idx).max; ++i)
+            for (var i = cube.GetRange(idx).min -1; i <= cube.GetRange(idx).max+1; ++i)
             {
                 var copy = new List<long>(input);
                 copy.Add(i);

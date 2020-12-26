@@ -11,7 +11,7 @@ namespace AdventOfCode2020.Days.Day17
     {
         protected override void Result(out string result)
         {
-            var input = ReadTable("Input2.txt");
+            var input = ReadTable("Input1.txt");
 
             var lastState = new CubeCreator().Create(input, GetDim());
             Console.WriteLine($"Step: {0}");

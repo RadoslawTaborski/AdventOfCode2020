@@ -10,13 +10,13 @@ namespace AdventOfCode2020.Days.Day17
     {
         public Cube Create(List<List<char>> input, int dim)
         {
-            var y = input.Count;
-            var x = input[0].Count;
+            var y = -input.Count/2;
+            var x = -input[0].Count/2;
             var result = new Cube(dim);
 
-            for (var i = 0; i < y; ++i)
+            for (var i = y; i < y + input.Count; ++i)
             {
-                for (var j = 0; j < x; ++j)
+                for (var j = x; j < x + input[0].Count; ++j)
                 {
                     var dims = new List<long> { i, j };
                     for (var k = 0; k < dim - 2; ++k)
@@ -24,7 +24,7 @@ namespace AdventOfCode2020.Days.Day17
                         dims.Add(0);
                     }
 
-                    switch (input[i][j])
+                    switch (input[i-y][j-x])
                     {
                         case '.':
                             result.SetCell(CellState.Inactive, dims.ToArray());

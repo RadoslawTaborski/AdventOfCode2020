@@ -12,22 +12,22 @@ namespace AdventOfCode2020.Days.Day17
         public int Dim { get; }
         public Dictionary<CubeKey, CellState> Cells { get; }
 
-        private List<Range> bounds;
+        public List<Range> Bounds { get; private set; }
 
         public Cube(int dim)
         {
             this.Dim = dim;
             this.Cells = new Dictionary<CubeKey, CellState>();
-            this.bounds = new List<Range>();
+            this.Bounds = new List<Range>();
             for(var i = 0; i < dim; ++i)
             {
-                bounds.Add(new Range { Min = 0, Max = 0 });
+                Bounds.Add(new Range { Min = 0, Max = 0 });
             }
         }
 
         public (long min, long max) GetRange(int dim)
         {
-            return (bounds[dim].Min, bounds[dim].Max);
+            return (Bounds[dim].Min, Bounds[dim].Max);
         }
 
         public CellState? GetValue(params long[] dims)
@@ -38,6 +38,16 @@ namespace AdventOfCode2020.Days.Day17
             }
 
             CubeKey key = new CubeKey(dims);
+            if (Cells.ContainsKey(key))
+            {
+                return Cells[key];
+            }
+
+            return CellState.Inactive;
+        }
+
+        public CellState? GetValue(CubeKey key)
+        {
             if (Cells.ContainsKey(key))
             {
                 return Cells[key];
@@ -61,7 +71,7 @@ namespace AdventOfCode2020.Days.Day17
         {
             for(var i =0; i<Dim; ++i)
             {
-                UpdateRange(dims[i], bounds[i]);
+                UpdateRange(dims[i], Bounds[i]);
             }
         }
 
@@ -77,28 +87,6 @@ namespace AdventOfCode2020.Days.Day17
             }
 
             return range;
-        }
-
-        public override string ToString()
-        {
-            var resultBuilder = new StringBuilder();
-            if (Dim == 3)
-            {
-                for (var z = bounds[2].Min; z <= bounds[2].Max; ++z)
-                {
-                    resultBuilder.Append($"z: {z}\r\n");
-                    for (var y = bounds[0].Min; y <= bounds[0].Max; ++y)
-                    {
-                        for (var x = bounds[1].Min; x <= bounds[1].Max; ++x)
-                        {
-                            resultBuilder.Append((char)GetValue(y, x, z));
-                        }
-                        resultBuilder.Append(Environment.NewLine);
-                    }
-                }
-            }
-
-            return resultBuilder.ToString();
         }
     }
 
@@ -118,7 +106,7 @@ namespace AdventOfCode2020.Days.Day17
 
         public override int GetHashCode()
         {
-            return (int)((31 * Dims.Aggregate((a, b) => a * b) + Dims.Count+17)%int.MaxValue);
+            return (int)(Dims.Aggregate((a,b)=> 1*a+3*b)%int.MaxValue);
         }
 
         public bool Equals(CubeKey other)
