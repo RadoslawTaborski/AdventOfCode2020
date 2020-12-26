@@ -11,29 +11,34 @@ namespace AdventOfCode2020.Puzzles
     {
         public void Run(IEnumerable<IPuzzle> tasks)
         {
-            Console.WriteLine($"--------------------------------------------------------------------------------------");
-            Console.WriteLine($"|{"Day",9}|{"Part",10}|{"Time [ms]",12}|{"Solution",50}|");
-            Console.WriteLine($"--------------------------------------------------------------------------------------");
+            PrintBoard();
+            PrintRow("", "", "Time", "Solution");
+            PrintBoard();
             var previousDay = tasks.ElementAt(0).Day;
             foreach (var task in tasks)
             {
                 if (previousDay != task.Day)
                 {
-                    Console.WriteLine($"--------------------------------------------------------------------------------------");
+                    PrintBoard();
                 }
-                PrintRow(task);
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
+                var result = task.Result();
+                sw.Stop();
+                PrintRow(task.Day.ToString(), task.Number.ToString(), sw.ElapsedMilliseconds.ToString() + " ms", result);
                 previousDay = task.Day;
             }
+            PrintBoard();
+        }
+
+        private static void PrintBoard()
+        {
             Console.WriteLine($"--------------------------------------------------------------------------------------");
         }
 
-        private static void PrintRow(IPuzzle task)
+        private static void PrintRow(string day, string part, string time, string solution)
         {
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-            var result = task.Result();
-            sw.Stop();
-            Console.WriteLine($"|{"Day "+task.Day,9}|{"Part "+task.Number,10}|{sw.ElapsedMilliseconds + " ms", 12}|{result,50}|");
+            Console.WriteLine($"|{"Day "+day,9}|{"Part "+part,10}|{time, 12}|{solution,50}|");
         }
     }
 }
