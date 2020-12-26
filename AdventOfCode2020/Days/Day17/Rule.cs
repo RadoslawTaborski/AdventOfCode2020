@@ -7,6 +7,6 @@ namespace AdventOfCode2020.Days.Day17
         public CellState From { get; init; }
         public CellState To { get; init; }
         public CellState Default { get; init; }
-        public List<int> Values { get; init; }
+        public List<long> Values { get; init; }
     }
 }
