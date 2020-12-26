@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventOfCode2020.Days.Day18
+namespace AdventOfCode2020.Days.Day24
 {
-    [Puzzle(18, 2)]
-    public class Task2 : Day18
+    [Puzzle(24)]
+    public class Task1 : Day24
     {
-        protected override ICreator GetCreator()
+        protected override HexGrid ModifyGrid(HexGrid grid)
         {
-            return new Task2Creator();
+            return grid;
         }
     }
 }

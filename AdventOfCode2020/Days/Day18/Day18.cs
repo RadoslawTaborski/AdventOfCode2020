@@ -11,9 +11,18 @@ namespace AdventOfCode2020.Days.Day18
     {
         protected override void Result(out string result)
         {
-            base.Result(out result);
-
             var input = ReadRows("input1.txt");
+
+            var collection = new List<long>();
+            foreach (var inp in input)
+            {
+                var operation = GetCreator().Create(inp);
+                collection.Add(operation.GetResult());
+            }
+
+            result = $"{ collection.Sum() }";
         }
+
+        protected abstract ICreator GetCreator();
     }
 }
