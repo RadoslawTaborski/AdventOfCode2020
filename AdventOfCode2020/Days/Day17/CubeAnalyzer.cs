@@ -22,7 +22,7 @@ namespace AdventOfCode2020.Days.Day17
         {
             var keysToCheck = new List<CubeKey>();
             Check(new List<long>(), ref keysToCheck, 0, dims);
-            keysToCheck = keysToCheck.Where(x => !dims.Equals(x)).ToList();
+            keysToCheck = keysToCheck.Where(x => !dims.Dims.SequenceEqual(x.Dims)).ToList();
             var result = new List<CubeKey>();
             foreach (var k in keysToCheck)
             {

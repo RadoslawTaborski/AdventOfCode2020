@@ -69,7 +69,7 @@ namespace AdventOfCode2020.Days.Day17
         }
     }
 
-    public class CubeKey : IEquatable<CubeKey>
+    public class CubeKey
     {
         public ImmutableList<long> Dims { get; private set; }
 
@@ -81,25 +81,6 @@ namespace AdventOfCode2020.Days.Day17
         public CubeKey(string str)
         {
             Dims = str.Split(",").Select(x=>long.Parse(x)).ToImmutableList();
-        }
-
-        public override bool Equals(object obj)
-        {
-            return obj is CubeKey key && key.Equals(this);
-        }
-
-        public override int GetHashCode()
-        {
-            return (int)(Dims.Aggregate((a,b)=> 1*a+3*b)%int.MaxValue);
-        }
-
-        public bool Equals(CubeKey other)
-        {
-            if (Dims.SequenceEqual(other.Dims))
-            {
-                return true;
-            }
-            return false;
         }
 
         public override string ToString()
