@@ -11,7 +11,6 @@ namespace AdventOfCode2020.Days.Day17
     {
         public int Dim { get; }
         public Dictionary<CubeKey, CellState> Cells { get; }
-
         public List<Range> Bounds { get; private set; }
 
         public Cube(int dim)
@@ -30,22 +29,6 @@ namespace AdventOfCode2020.Days.Day17
             return (Bounds[dim].Min, Bounds[dim].Max);
         }
 
-        public CellState? GetValue(params long[] dims)
-        {
-            if (dims.Length != this.Dim)
-            {
-                throw new Exception("wrong number of input data");
-            }
-
-            CubeKey key = new CubeKey(dims);
-            if (Cells.ContainsKey(key))
-            {
-                return Cells[key];
-            }
-
-            return CellState.Inactive;
-        }
-
         public CellState? GetValue(CubeKey key)
         {
             if (Cells.ContainsKey(key))
@@ -56,22 +39,17 @@ namespace AdventOfCode2020.Days.Day17
             return CellState.Inactive;
         }
 
-        public void SetCell(CellState value, params long[] dims)
+        public void SetCell(CellState value, CubeKey dims)
         {
-            if(dims.Length != this.Dim)
-            {
-                throw new Exception("wrong number of input data");
-            }
-
-            Cells[new CubeKey(dims)] = value;
+            Cells[dims] = value;
             UpdateRanges(dims);
         }
 
-        private void UpdateRanges(params long[] dims)
+        private void UpdateRanges(CubeKey key)
         {
             for(var i =0; i<Dim; ++i)
             {
-                UpdateRange(dims[i], Bounds[i]);
+                UpdateRange(key.Dims[i], Bounds[i]);
             }
         }
 

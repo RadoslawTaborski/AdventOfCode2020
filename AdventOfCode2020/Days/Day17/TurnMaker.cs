@@ -21,32 +21,16 @@ namespace AdventOfCode2020.Days.Day17
         {
             var result = new Cube(inputState.Dim);
 
-            var keys = new List<List<long>>();
-            GetPossibilities(new List<long>(), ref keys, 0, inputState);
+            var keys = CubeAnalyzer.GetPossibilities(inputState);
 
             foreach (var key in keys)
             {
-                var value = checker.Check(inputState, key.ToArray());
-                CellState newState = placeSpecifier.GetState(inputState.GetValue(key.ToArray()).Value, value);
-                result.SetCell(newState, key.ToArray());
+                var value = checker.Check(inputState, key);
+                CellState newState = placeSpecifier.GetState(inputState.GetValue(key).Value, value);
+                result.SetCell(newState, key);
             }
 
             return result;
-        }
-
-        private void GetPossibilities(List<long> input, ref List<List<long>> output, int idx, Cube cube)
-        {
-            if (idx == cube.Dim)
-            {
-                output.Add(input);
-                return;
-            }
-            for (var i = cube.GetRange(idx).min -1; i <= cube.GetRange(idx).max+1; ++i)
-            {
-                var copy = new List<long>(input);
-                copy.Add(i);
-                GetPossibilities(copy, ref output, idx + 1, cube);
-            }
         }
     }
 }

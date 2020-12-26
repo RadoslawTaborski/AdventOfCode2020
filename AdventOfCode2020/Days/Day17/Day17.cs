@@ -14,18 +14,14 @@ namespace AdventOfCode2020.Days.Day17
             var input = ReadTable("Input1.txt");
 
             var lastState = new CubeCreator().Create(input, GetDim());
-            Console.WriteLine($"Step: {0}");
-            Console.WriteLine(lastState);
             int counter = 1;
             while (counter <= 6)
             {
                 lastState = GetTurnMaker().MakeTurn(lastState);
-                Console.WriteLine($"Step: {counter}");
-                Console.WriteLine(lastState);
                 counter++;
             }
 
-            result = $"{new CubeAnalyzer().GetNoOfActiveCube(lastState)}";
+            result = $"{CubeAnalyzer.GetNoOfActiveCube(lastState)}";
         }
 
         protected abstract int GetDim();
@@ -37,7 +33,7 @@ namespace AdventOfCode2020.Days.Day17
                     From = CellState.Active,
                     To = CellState.Active,
                     Default = CellState.Inactive,
-                    Values = new List<long> {2,3}
+                    Values = new List<long> {2, 3}
                 },
                 new Rule
                 {
